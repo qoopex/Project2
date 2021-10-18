@@ -14,7 +14,7 @@ int main() {
 	while (work) {
 		cout << "Choose action(0.exit, 1-create file in current directory, 2.delete file in current directory," << endl
 			<< " 3.rename file in current directory, 4.move file from current directory to chosen directory," << endl
-			<< " 5.print file, 6.create directory, 7.remove directory with all content):";
+			<< " 5.print file, 6.create directory, 7.remove directory with all content, 8.copy file):";
 		cin >> action;
 
 		if (action == 0) {
@@ -97,7 +97,7 @@ int main() {
 			}
 			else {
 				cout << "Error" << endl;
-				exit(-1);
+				exit(-2);
 			}
 		}
 
@@ -113,6 +113,23 @@ int main() {
 				cout << dname << " removed with all content" << endl;
 			}
 
+		}
+
+		if (action == 8) {
+			string filename, copiedfilename;
+			cout << "Enter file name to copy(with extension):";
+			cin >> filename;
+			cout << "Enter new file name(with extension):";
+			cin >> copiedfilename;
+			fs::copy(filename, copiedfilename);
+			cout << endl;
+			if (fs::exists(copiedfilename)) {
+				cout << filename << " copied with name " << copiedfilename << endl;
+			}
+			else {
+				cout << "Error" << endl;
+				exit(-2);
+			}
 		}
 
 		cout << endl << endl;
