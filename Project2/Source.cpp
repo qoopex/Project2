@@ -14,7 +14,7 @@ int main() {
 	while (work) {
 		cout << "Choose action(0.exit, 1-create file in current directory, 2.delete file in current directory," << endl
 			<< " 3.rename file in current directory, 4.move file from current directory to chosen directory," << endl
-			<< " 5.print file, 6.create directory):";
+			<< " 5.print file, 6.create directory, 7.remove directory with all content):";
 		cin >> action;
 
 		if (action == 0) {
@@ -96,9 +96,23 @@ int main() {
 				cout << dname << " created" << endl;
 			}
 			else {
-				cout << "Error";
+				cout << "Error" << endl;
 				exit(-1);
 			}
+		}
+
+		if (action == 7) {
+			string dname;
+			cout << "Enter directory name to remove it with all content:";
+			cin >> dname;
+			if (fs::exists(dname)) {
+				cout << "Error" << endl;
+					exit(-2);
+			}
+			else {
+				cout << dname << " removed with all content" << endl;
+			}
+
 		}
 
 		cout << endl << endl;
