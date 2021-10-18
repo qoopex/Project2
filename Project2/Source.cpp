@@ -14,7 +14,7 @@ int main() {
 	while (work) {
 		cout << "Choose action(0.exit, 1-create file in current directory, 2.delete file in current directory," << endl
 			<< " 3.rename file in current directory, 4.move file from current directory to chosen directory," << endl
-			<< " 5.print file):";
+			<< " 5.print file, 6.create directory):";
 		cin >> action;
 
 		if (action == 0) {
@@ -85,6 +85,20 @@ int main() {
 			}
 			cout << "\n" << fname << " printed" << endl;
 			file1.close();
+		}
+
+		if (action == 6) {
+			string dname;
+			cout << "Enter directory name:";
+			cin >> dname;
+			fs::create_directory(dname);
+			if (fs::exists(dname)) {
+				cout << dname << " created" << endl;
+			}
+			else {
+				cout << "Error";
+				exit(-1);
+			}
 		}
 
 		cout << endl << endl;
